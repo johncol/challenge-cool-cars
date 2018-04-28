@@ -1,0 +1,31 @@
+<mat-card>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+
+    <mat-card-header>
+      <h2>
+        {{ car?.name ? 'Edit' : 'Add'}}
+      </h2>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Car name" formControlName="name" required name="name">
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Save</button>
+      <button mat-raised-button color="secondary" type="button" *ngIf="car?.href" (click)="remove()">Remove</button>
+      <a mat-button routerLink="/car-list">Cancel</a>
+    </mat-card-actions>
+
+    <mat-card-footer *ngIf="car?.href">
+      <div class="giphy">
+        <img [src]="car.giphyUrl | async" [alt]="car.name">
+      </div>
+    </mat-card-footer>
+
+  </form>
+
+</mat-card>
