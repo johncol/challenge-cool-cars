@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-content>
+    <button *ngIf="!isAuthenticated; else buttonToCarsList" mat-raised-button color="acent" (click)="oktaAuthService.loginRedirect()">
+      Login
+    </button>
+    <ng-template #buttonToCarsList>
+      <button mat-raised-button color="acent" routerLink="/car-list">
+        Car List
+      </button>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
